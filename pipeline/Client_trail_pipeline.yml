@@ -1,0 +1,46 @@
+resources:
+  jobs:
+    Clinical_Trail_Pipeline:
+      name: Clinical Trail Pipeline
+      tasks:
+        - task_key: Clinical_trail_LB_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/transform/bronze/clinical_trials_LB
+            source: WORKSPACE
+        - task_key: Clinical_trail_LB_Silver
+          depends_on:
+            - task_key: Clinical_trail_LB_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/transform/silver/clinical_trials_LB_silver
+            source: WORKSPACE
+        - task_key: Clinical_trail_VS_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/transform/bronze/clinical_trials_VS
+            source: WORKSPACE
+        - task_key: Clinical_trail_VS_Silver
+          depends_on:
+            - task_key: Clinical_trail_VS_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/transform/silver/clinical_trials_VS_silver
+            source: WORKSPACE
+        - task_key: Clinical_trail_gold
+          depends_on:
+            - task_key: Clinical_trail_VS_Silver
+            - task_key: Clinical_trail_LB_Silver
+            - task_key: Clinical_trail_DM_Silver
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/transform/gold/clinical_trials_gold
+            source: WORKSPACE
+        - task_key: clinical_trial_DM_Bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/transform/bronze/clinical_trials_DM
+            source: WORKSPACE
+        - task_key: Clinical_trail_DM_Silver
+          depends_on:
+            - task_key: clinical_trial_DM_Bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/transform/silver/clinical_trials_DM_silver
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

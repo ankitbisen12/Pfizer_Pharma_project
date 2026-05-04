@@ -1,0 +1,18 @@
+resources:
+  jobs:
+    Pfizer_Lookup_Pipeline:
+      name: Pfizer_Lookup_Pipeline
+      tasks:
+        - task_key: get_run_day
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/condtiton_holiday/get_run_day
+            source: WORKSPACE
+        - task_key: check_holiday
+          depends_on:
+            - task_key: get_run_day
+          notebook_task:
+            notebook_path: /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/condtiton_holiday/schedule_pipeline_activity
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
