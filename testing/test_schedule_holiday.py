@@ -1,4 +1,8 @@
-from schedule_holiday import check_date_exists
+# Databricks notebook source
+# MAGIC %run /Workspace/Users/ankitbisen751@gmail.com/Pfizer_project/testing/main
+
+# COMMAND ----------
+
 from runtime.nutterfixture import NutterFixture
 from pyspark.sql import Row
 from datetime import datetime
@@ -32,3 +36,6 @@ class DateCheckFixture(NutterFixture):
 
 result = DateCheckFixture().execute_tests()
 print(result.to_string())
+
+# COMMAND ----------
+

@@ -1,3 +1,4 @@
+# Databricks notebook source
 from pyspark.sql import functions as F
 
 def check_date_exists(df, input_date):
