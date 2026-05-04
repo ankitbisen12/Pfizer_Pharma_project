@@ -123,7 +123,7 @@ df_bronze = (
 
 ![clinical_trials](images/tables/clinical_trail_2.png)
 
-![schedule_holiday](images/tables/schedule_holiday.png)
+![schedule_holiday](images/tables/holiday_png.png)
 
 ## 📈 Visualizations & Results
 
