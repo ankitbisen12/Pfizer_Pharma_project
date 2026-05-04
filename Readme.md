@@ -125,6 +125,8 @@ df_bronze = (
 
 ![schedule_holiday](images/tables/holiday_png.png)
 
+
+
 ## 📈 Visualizations & Results
 
 ### Analytics Dashboard Outputs
@@ -152,10 +154,13 @@ df_bronze = (
 ![Holiday-Based Scheduling](images/pipeline_img/pfizer_lookup_pipeline.png)
 
 ### Clinical Trials Pipeline Flow
-![Clinical Trials Pipeline](images/pipeline_img/client_trail_pipeline.png)
+![Clinical Trials Pipeline](images/pipeline_img/clinical_trail_pipeline.png)
 
 ### Manufacturing Pipeline Flow
 ![Manufacturing Pipeline](images/pipeline_img/manufacturing_pipeline.png)
+
+### Lab Result Pipeline 
+![Lab Result Pipeline](images/pipeline_img/Lab_Result_pipeline.png)
 
 ## 🔧 Configuration
 
