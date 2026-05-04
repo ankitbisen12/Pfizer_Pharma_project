@@ -117,6 +117,20 @@ df_bronze = (
 - Reporting tables
 - ML-ready datasets
 
+## 📋 Pipeline Execution
+
+### Holiday-Based Scheduling
+![Holiday-Based Scheduling](images/pipeline_img/pfizer_lookup_pipeline.png)
+
+### Clinical Trials Pipeline Flow
+![Clinical Trials Pipeline](images/pipeline_img/clinical_trail_pipeline.png)
+
+### Manufacturing Pipeline Flow
+![Manufacturing Pipeline](images/pipeline_img/manufacturing_pipeline.png)
+
+### Lab Result Pipeline 
+![Lab Result Pipeline](images/pipeline_img/Lab_Result_pipeline.png)
+
 ## Tables
 
 ![clinical_trials](images/tables/clinical_trail_1.png)
@@ -148,19 +162,7 @@ df_bronze = (
 - Appropriate IAM permissions
 - Databricks secrets configured
 
-## 📋 Pipeline Execution
 
-### Holiday-Based Scheduling
-![Holiday-Based Scheduling](images/pipeline_img/pfizer_lookup_pipeline.png)
-
-### Clinical Trials Pipeline Flow
-![Clinical Trials Pipeline](images/pipeline_img/clinical_trail_pipeline.png)
-
-### Manufacturing Pipeline Flow
-![Manufacturing Pipeline](images/pipeline_img/manufacturing_pipeline.png)
-
-### Lab Result Pipeline 
-![Lab Result Pipeline](images/pipeline_img/Lab_Result_pipeline.png)
 
 ## 🔧 Configuration
 
