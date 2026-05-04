@@ -6,18 +6,6 @@ This project implements a comprehensive data pipeline for Pfizer pharmaceutical 
 
 ## 🏗️ Architecture Overview
 
-### Medallion Architecture Implementation
-
-The project follows the Lakehouse architecture pattern with three distinct layers:
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│     BRONZE      │    │     SILVER      │    │      GOLD      │
-│   Raw Data      │───▶│  Cleaned Data   │───▶│ Business Ready │
-│   Ingestion     │    │   Validation    │    │   Analytics     │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
-
 ![Architecture Diagram](images/architecture.svg)
 
 ## 📁 Project Structure
@@ -91,9 +79,9 @@ Date,Holiday Name
 ... [Additional holidays]
 ```
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
-- **Platform**: Databricks Lakehouse
+- **Platform**: Databricks
 - **Storage**: Delta Lake on S3
 - **Processing**: Apache Spark
 - **Architecture**: Medallion (Bronze-Silver-Gold)
@@ -149,58 +137,22 @@ df_bronze = (
 - Appropriate IAM permissions
 - Databricks secrets configured
 
-### Environment Setup
-
-1. **Create Catalogs and Schemas**
-```sql
--- Run setup_catalog.sql
-CREATE CATALOG IF NOT EXISTS pfizer;
-USE CATALOG pfizer;
-CREATE SCHEMA IF NOT EXISTS pfizer.bronze;
-CREATE SCHEMA IF NOT EXISTS pfizer.silver;
-CREATE SCHEMA IF NOT EXISTS pfizer.gold;
-```
-
-2. **Configure Secrets**
-```python
-# Example secret configuration
-base_path = dbutils.secrets.get("bucket","clinical_trails_LB")
-```
-
-3. **Deploy Pipelines**
-- Import pipeline YAML files to Databricks Jobs
-- Configure job schedules
-- Set up dependencies
-
 ## 📋 Pipeline Execution
 
-### Clinical Trials Pipeline Flow
-
-```mermaid
-graph TD
-    A[Clinical_trail_LB_bronze] --> B[Clinical_trail_LB_Silver]
-    C[Clinical_trail_VS_bronze] --> D[Clinical_trail_VS_Silver]
-    E[Clinical_trial_DM_Bronze] --> F[Clinical_trail_DM_Silver]
-    B --> G[Clinical_trail_gold]
-    D --> G
-    F --> G
-```
-
 ### Holiday-Based Scheduling
+![Holiday-Based Scheduling](images/pipeline_img/pfizer_lookup_pipeline.png)
 
-```mermaid
-graph TD
-    A[get_run_day] --> B[check_holiday]
-    B --> C{Is Holiday?}
-    C -->|No| D[Execute Pipeline]
-    C -->|Yes| E[Skip Execution]
-```
+### Clinical Trials Pipeline Flow
+![Clinical Trials Pipeline](images/pipeline_img/client_trail_pipeline.png)
+
+### Manufacturing Pipeline Flow
+![Manufacturing Pipeline](images/pipeline_img/manufacturing_pipeline.png)
 
 ## 🔧 Configuration
 
 ### Pipeline Settings
 - **Performance Target**: PERFORMANCE_OPTIMIZED
-- **Queue**: Enabled
+- **Notification**: Enabled
 - **Trigger**: AvailableNow for streaming
 - **Checkpoint Location**: Configured for each stream
 
@@ -229,26 +181,6 @@ graph TD
 - Execution logs
 - Performance monitoring
 
-## 🔍 Data Sources & Schemas
-
-### Clinical Trials Data Types
-
-1. **LB (Laboratory)**
-   - Lab test results
-   - Biomarker measurements
-   - Clinical chemistry values
-
-2. **VS (Vital Signs)**
-   - Blood pressure
-   - Heart rate
-   - Temperature
-   - Respiratory rate
-
-3. **DM (Demographics)**
-   - Patient information
-   - Trial enrollment data
-   - Site information
-
 ### Manufacturing Data Types
 
 - Equipment tracking
@@ -271,16 +203,5 @@ Regular monitoring of:
 - Security audits
 - Backup verification
 
-## 📄 License
-
-This project is proprietary to Pfizer and contains confidential pharmaceutical data processing pipelines.
-
-## 🤝 Contributing
-
-For contributions or issues, please contact the data engineering team at Pfizer.
-
----
-
-**Last Updated**: May 2026  
-**Version**: 1.0  
-**Maintainer**: Pfizer Data Engineering Team
+## 👨‍💻 Author
+**Ankit Bisen**
