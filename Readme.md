@@ -28,7 +28,7 @@ Pharma_project/
 │   └── tables/
 ├── 📁 result/                  # Output visualizations
 │   ├── df_analyst_vis.png
-│   ├── newplot (1).png
+│   ├── newplot.png
 │   └── visualization.png
 ├── 📁 Setup/                   # Environment setup
 │   ├── setup_catalog.sql
@@ -87,6 +87,7 @@ Date,Holiday Name
 - **Architecture**: Medallion (Bronze-Silver-Gold)
 - **Ingestion**: Auto Loader with CloudFiles
 - **Scheduling**: Databricks Jobs
+- **Testing**: Pytest
 
 ## 📊 Data Flow Architecture
 
@@ -115,6 +116,14 @@ df_bronze = (
 - KPI calculations
 - Reporting tables
 - ML-ready datasets
+
+## Tables
+
+![clinical_trials](images/tables/clinical_trail_1.png)
+
+![clinical_trials](images/tables/clinical_trail_2.png)
+
+![schedule_holiday](images/tables/schedule_holiday.png)
 
 ## 📈 Visualizations & Results
 
